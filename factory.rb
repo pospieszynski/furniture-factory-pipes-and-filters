@@ -1,12 +1,8 @@
-require 'thread'
 require_relative './chair.rb'
-
-finished_chairs = []
-workers = []
 
 def provide_wood
   sleep(rand(1..2))
-  puts "provided chair"
+  puts "provided provide_wood"
   Chair.new
 end
 
@@ -41,10 +37,9 @@ end
 def pack_chair(chair)
   sleep(rand(1..2))
   chair.packed = true
-  puts "packed chair"
   chair
 end
 
-loop do |i|
-  puts pack_chair(assemble_stabilizer(assemble_backrest(assemble_feet(cut_seat(provide_wood))))).id
+loop do
+  puts "packed #{pack_chair(assemble_stabilizer(assemble_backrest(assemble_feet(cut_seat(provide_wood))))).id} chair" 
 end
